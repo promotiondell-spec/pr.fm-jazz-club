@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>101.1 JAZZ CLUB — pr.fm / Editorial Version</title>
+  <meta
+    name="description"
+    content="Премиальный мобильный лендинг радиостанции 101.1 JAZZ CLUB от pr.fm. Светлый минимализм, ароматы Obsidian и Oud Touch, джазовый плейлист, Rutube-обзоры и другие волны."
+  />
+  <style>
+    :root {
+      --bg: #f5f4f1;
+      --paper: #fcfcfa;
+      --card: rgba(255, 255, 255, 0.78);
+      --text: #0e0e0e;
+      --muted: #707070;
+      --soft: #a6a6a6;
+      --line: rgba(17, 17, 17, 0.10);
+      --line-strong: rgba(17, 17, 17, 0.88);
+      --shadow: 0 12px 36px rgba(0, 0, 0, 0.045);
+      --radius: 22px;
+      --radius-sm: 16px;
+      --container: 600px;
+      --ease: 220ms ease;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top left, rgba(255,255,255,0.9), transparent 38%), linear-gradient(180deg, #f8f7f3 0%, #f1f0ec 100%);
+      color: var(--text);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 300;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .page { padding: 0 16px 36px; }
+    .container { width: 100%; max-width: var(--container); margin: 0 auto; }
+
+    .section { padding: 30px 0; position: relative; }
+    .section + .section::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(17,17,17,0), rgba(17,17,17,0.12) 18%, rgba(17,17,17,0.12) 82%, rgba(17,17,17,0));
+    }
+
+    .hero { padding-top: 28px; padding-bottom: 34px; }
+
+    .brand {
+      margin: 0 0 10px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: lowercase;
+      color: var(--muted);
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: clamp(44px, 14vw, 76px);
+      line-height: 0.92;
+      letter-spacing: -0.06em;
+      font-weight: 800;
+      text-transform: uppercase;
+      max-width: 6ch;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .hero-meta::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--line-strong);
+      flex: 0 0 auto;
+    }
+
+    .frequency {
+      margin: 0;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 15px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .hero-copy {
+      margin: 24px 0 0;
+      max-width: 33ch;
+      font-size: 16px;
+      color: #4f4f4f;
+    }
+
+    .hero-note {
+      margin-top: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.5);
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--text);
+      opacity: 0.75;
+      animation: pulse 2.2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.45; }
+      50% { transform: scale(1.35); opacity: 1; }
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+
+    .section-index {
+      margin: 0;
+      font-size: 11px;
+      font-family: "Courier New", Courier, monospace;
+      letter-spacing: 0.18em;
+      color: var(--soft);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .intro-text {
+      margin: 0;
+      font-size: 15px;
+      color: #565656;
+      max-width: 40ch;
+    }
+
+    .scents,
+    .waves {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .scent-card,
+    .music-box,
+    .wave-card,
+    .review-card,
+    .footer-shell {
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .scent-card {
+      min-height: 100%;
+      padding: 14px;
+      border-radius: var(--radius);
+      background: var(--card);
+      transition: transform var(--ease), border-color var(--ease), box-shadow var(--ease);
+    }
+
+    .scent-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .mini-code {
+      font-size: 10px;
+      font-family: "Courier New", Courier, monospace;
+      color: var(--soft);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .bottle {
+      position: relative;
+      width: 68px;
+      height: 90px;
+      border-radius: 18px;
+      border: 1.5px solid var(--line-strong);
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(239,239,239,0.95));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      overflow: hidden;
+    }
+
+    .bottle::before {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 14px;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -48%);
+      border: 1.5px solid var(--line-strong);
+      border-radius: 8px 8px 4px 4px;
+      background: #fff;
+    }
+
+    .bottle::after {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border-radius: 12px;
+      border: 1px solid rgba(17,17,17,0.08);
+      pointer-events: none;
+    }
+
+    .bottle-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.25;
+      padding: 0 6px;
+    }
+
+    .scent-name {
+      margin: 0 0 6px;
+      font-size: 24px;
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .scent-type {
+      margin: 0 0 12px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .scent-notes {
+      margin: 0 0 18px;
+      font-size: 13px;
+      color: #303030;
+    }
+
+    .scent-notes strong { font-weight: 700; }
+
+    .card-actions {
+      display: grid;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 15px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--text);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: background var(--ease), color var(--ease), transform var(--ease), box-shadow var(--ease);
+      cursor: pointer;
+    }
+
+    .music-box,
+    .review-card {
+      padding: 12px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.72);
+    }
+
+    .player-frame,
+    .video-frame {
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #f2f2f2, #ececec);
+    }
+
+    .player-frame iframe {
+      display: block;
+      width: 100%;
+      height: 230px;
+      border: 0;
+    }
+
+    .video-frame {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+    }
+
+    .video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .playlist-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 14px 2px 0;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .playlist-label {
+      margin: 0;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .playlist-count {
+      margin: 0;
+      font-size: 11px;
+      font-family: "Courier New", Courier, monospace;
+      color: var(--soft);
+      letter-spacing: 0.14em;
+    }
+
+    .tracks {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 0;
+    }
+
+    .tracks li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .tracks li:last-child { border-bottom: 0; padding-bottom: 2px; }
+
+    .track-num {
+      flex: 0 0 28px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 11px;
+      color: var(--soft);
+      letter-spacing: 0.08em;
+      padding-top: 1px;
+    }
+
+    .track-text {
+      margin: 0;
+      font-size: 14px;
+      color: #1a1a1a;
+    }
+
+    .track-text strong { font-weight: 700; }
+
+    .review-copy {
+      margin: 0 0 14px;
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 38ch;
+    }
+
+    .review-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .wave-card {
+      position: relative;
+      min-height: 138px;
+      padding: 14px;
+      border-radius: var(--radius-sm);
+      background: rgba(255,255,255,0.7);
+      transition: transform var(--ease), border-color var(--ease), background var(--ease), box-shadow var(--ease);
+    }
+
+    .wave-label {
+      margin: 0 0 8px;
+      font-size: 11px;
+      font-family: "Courier New", Courier, monospace;
+      letter-spacing: 0.18em;
+      color: var(--soft);
+      text-transform: uppercase;
+    }
+
+    .wave-title {
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+
+    .wave-copy {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 18ch;
+    }
+
+    .footer {
+      padding-top: 30px;
+      padding-bottom: 10px;
+    }
+
+    .footer-shell {
+      padding: 16px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.72);
+    }
+
+    .footer-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .footer-brand {
+      margin: 0;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .footer-brand strong { font-weight: 800; }
+
+    .socials { display: flex; gap: 10px; }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--line-strong);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      transition: background var(--ease), color var(--ease), transform var(--ease);
+    }
+
+    .social-link svg { width: 17px; height: 17px; fill: currentColor; }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-text,
+    .footer-copy {
+      margin: 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: none;
+    }
+
+    .modal.is-open { display: block; }
+
+    .modal__backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.42);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+    .modal__dialog {
+      position: relative;
+      z-index: 1;
+      width: calc(100% - 24px);
+      max-width: 600px;
+      margin: 24px auto;
+      background: #fff;
+      color: #111;
+      border: 1px solid rgba(17, 17, 17, 0.12);
+      border-radius: 22px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+      overflow: hidden;
+    }
+
+    .modal__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 14px 12px;
+      border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+    }
+
+    .modal__title {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+
+    .modal__close {
+      width: 38px;
+      height: 38px;
+      border: 1px solid #111;
+      border-radius: 999px;
+      background: transparent;
+      color: #111;
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+    }
+
+    .modal__close:active { transform: scale(0.98); }
+    .modal__body { padding: 12px; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 600ms ease, transform 600ms ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 360px) {
+      .scents,
+      .waves { grid-template-columns: 1fr; }
+    }
+
+    @media (min-width: 768px) {
+      .page { padding-left: 24px; padding-right: 24px; padding-bottom: 54px; }
+      .hero { padding-top: 42px; padding-bottom: 42px; }
+      .section { padding: 38px 0; }
+      .scent-card, .wave-card { padding: 18px; }
+      .music-box, .review-card { padding: 14px; }
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .btn:hover,
+      .social-link:hover,
+      .modal__close:hover {
+        background: var(--text);
+        color: #fff;
+        transform: translateY(-1px);
+      }
+
+      .scent-card:hover,
+      .wave-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(17,17,17,0.22);
+        box-shadow: 0 18px 44px rgba(0, 0, 0, 0.06);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+
+      .reveal { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="container">
+      <section class="hero section reveal" aria-labelledby="hero-title">
+        <p class="brand">pr.fm</p>
+        <h1 class="hero-title" id="hero-title">JAZZ CLUB</h1>
+        <div class="hero-meta"><p class="frequency">101.1 FM</p></div>
+        <p class="hero-copy">Глубокий, дымный, вечерний джаз. Для тех, кто любит сложные мелодии и бархатные басы.</p>
+        <div class="hero-note" aria-label="Сейчас в эфире"><span class="dot" aria-hidden="true"></span>now playing / fragrance radio</div>
+      </section>
+
+      <section class="section reveal" aria-labelledby="scents-title">
+        <div class="section-head">
+          <h2 class="section-title" id="scents-title">Ароматы волны</h2>
+          <p class="section-index">01 / scents</p>
+        </div>
+        <p class="intro-text">Два характера одной частоты: тёмная глубина древесных аккордов и чувственная восточная мягкость в вечернем эфире.</p>
+        <div class="scents">
+          <article class="scent-card" aria-label="Аромат Obsidian">
+            <div class="scent-top">
+              <p class="mini-code">signal / a</p>
+              <div class="bottle" aria-hidden="true"><div class="bottle-label">Obsidian</div></div>
+            </div>
+            <h3 class="scent-name">Obsidian</h3>
+            <p class="scent-type">тёмный, древесный, амбровый</p>
+            <p class="scent-notes"><strong>Ноты:</strong> бергамот, кориандр, можжевельник, дубовый мох, ваниль</p>
+            <div class="card-actions">
+              <a class="btn" href="#" target="_blank" rel="noopener noreferrer" data-product="obsidian">Купить на WB</a>
+              <button class="btn" type="button" data-review-title="Obsidian — видеообзор" data-rutube="https://rutube.ru/play/embed/REPLACE_OBSIDIAN_VIDEO_ID">Смотреть обзор</button>
+            </div>
+          </article>
+          <article class="scent-card" aria-label="Аромат Oud Touch">
+            <div class="scent-top">
+              <p class="mini-code">signal / b</p>
+              <div class="bottle" aria-hidden="true"><div class="bottle-label">Oud Touch</div></div>
+            </div>
+            <h3 class="scent-name">Oud Touch</h3>
+            <p class="scent-type">восточный, пудровый, страстный</p>
+            <p class="scent-notes"><strong>Ноты:</strong> карамель, клюква, шафран, уд, ваниль</p>
+            <div class="card-actions">
+              <a class="btn" href="#" target="_blank" rel="noopener noreferrer" data-product="oud-touch">Купить на WB</a>
+              <button class="btn" type="button" data-review-title="Oud Touch — видеообзор" data-rutube="https://rutube.ru/play/embed/REPLACE_OUD_TOUCH_VIDEO_ID">Смотреть обзор</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" aria-labelledby="playlist-title">
+        <div class="section-head">
+          <h2 class="section-title" id="playlist-title">Плейлист волны</h2>
+          <p class="section-index">02 / playlist</p>
+        </div>
+        <div class="music-box">
+          <div class="player-frame">
+            <!-- ВСТАВЬТЕ СЮДА РЕАЛЬНЫЙ ID ПЛЕЙЛИСТА ЯНДЕКС.МУЗЫКИ -->
+            <iframe title="Яндекс Музыка — JAZZ CLUB Playlist" src="https://music.yandex.ru/iframe/#playlist/000000000/00000000" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+          </div>
+          <div class="playlist-meta">
+            <p class="playlist-label">selected tracks</p>
+            <p class="playlist-count">06 tracks</p>
+          </div>
+          <ol class="tracks" aria-label="Список треков">
+            <li><span class="track-num">01</span><p class="track-text"><strong>Nina Simone</strong> — Feeling Good</p></li>
+            <li><span class="track-num">02</span><p class="track-text"><strong>Chet Baker</strong> — I Fall In Love Too Easily</p></li>
+            <li><span class="track-num">03</span><p class="track-text"><strong>Miles Davis</strong> — So What</p></li>
+            <li><span class="track-num">04</span><p class="track-text"><strong>Gregory Porter</strong> — Liquid Spirit</p></li>
+            <li><span class="track-num">05</span><p class="track-text"><strong>Melody Gardot</strong> — Baby I'm A Fool</p></li>
+            <li><span class="track-num">06</span><p class="track-text"><strong>Kamasi Washington</strong> — Truth</p></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section reveal" aria-labelledby="reviews-title">
+        <div class="section-head">
+          <h2 class="section-title" id="reviews-title">Обзоры эфира</h2>
+          <p class="section-index">03 / review</p>
+        </div>
+        <div class="review-card">
+          <p class="review-copy">Слушай обзор ароматов волны 101.1 JAZZ CLUB: характер Obsidian, глубина Oud Touch и настроение вечернего джаза в эфире pr.fm.</p>
+          <div class="video-frame">
+            <iframe src="https://rutube.ru/play/embed/REPLACE_GENERAL_REVIEW_VIDEO_ID" title="Обзор ароматов JAZZ CLUB на Rutube" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; encrypted-media" allowfullscreen></iframe>
+          </div>
+          <div class="review-actions">
+            <button class="btn" type="button" data-review-title="Обзор волны JAZZ CLUB" data-rutube="https://rutube.ru/play/embed/REPLACE_GENERAL_REVIEW_VIDEO_ID">Открыть обзор</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal" aria-labelledby="waves-title">
+        <div class="section-head">
+          <h2 class="section-title" id="waves-title">Другие волны pr.fm</h2>
+          <p class="section-index">04 / stations</p>
+        </div>
+        <div class="waves">
+          <a class="wave-card" href="pop-hits.html" aria-label="POP HITS 97.5 FM"><p class="wave-label">97.5 FM</p><h3 class="wave-title">POP HITS</h3><p class="wave-copy">Mango Twist, Sorbet, Colibri</p></a>
+          <a class="wave-card" href="lounge.html" aria-label="LOUNGE 105.2 FM"><p class="wave-label">105.2 FM</p><h3 class="wave-title">LOUNGE</h3><p class="wave-copy">Magic Spell, Bary</p></a>
+          <a class="wave-card" href="city-fm.html" aria-label="CITY FM 88.9 FM"><p class="wave-label">88.9 FM</p><h3 class="wave-title">CITY FM</h3><p class="wave-copy">Weekend, Atelier Paris</p></a>
+          <a class="wave-card" href="ambient.html" aria-label="AMBIENT 100.3 FM"><p class="wave-label">100.3 FM</p><h3 class="wave-title">AMBIENT</h3><p class="wave-copy">Vetiver Blanc</p></a>
+        </div>
+      </section>
+
+      <footer class="footer reveal" aria-labelledby="footer-title">
+        <h2 class="sr-only" id="footer-title">Подвал сайта</h2>
+        <div class="footer-shell">
+          <div class="footer-top">
+            <p class="footer-brand"><strong>pr.fm</strong> — твой парфюм в эфире</p>
+            <div class="socials" aria-label="Социальные сети">
+              <a class="social-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="VK" data-social="vk"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.12 7.89c.13 6.28 3.27 10.05 8.78 10.05h.31v-3.6c2.02.19 3.54 1.65 4.15 3.6H20.2c-.78-2.85-2.84-4.43-4.13-5.03 1.29-.74 3.08-2.53 3.51-5.02h-2.58c-.57 2.02-2.22 3.81-3.79 3.98V7.89h-2.58v6.98c-1.59-.39-3.6-2.31-3.69-6.98H4.12Z"/></svg></a>
+              <a class="social-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Telegram" data-social="tg"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.67 4.33a1.2 1.2 0 0 0-1.25-.18L3.34 10.68a1.1 1.1 0 0 0 .08 2.06l4.04 1.37 1.55 4.9a1.12 1.12 0 0 0 1.95.35l2.27-2.78 4.46 3.26a1.17 1.17 0 0 0 1.84-.72l2.32-13.63a1.18 1.18 0 0 0-.48-1.16ZM9.5 17.14l-.94-2.97 8.16-6.76-6.29 7.61-.93 2.12Z"/></svg></a>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p class="footer-text">minimal radio / fragrance editorial</p>
+            <p class="footer-copy">© 2026 pr.fm</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <div class="modal" id="reviewModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="reviewModalTitle">
+      <div class="modal__header">
+        <h3 class="modal__title" id="reviewModalTitle">Видеообзор</h3>
+        <button class="modal__close" type="button" aria-label="Закрыть" data-close-modal>×</button>
+      </div>
+      <div class="modal__body">
+        <div class="video-frame">
+          <iframe id="reviewModalFrame" src="" title="Видеообзор аромата" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const links = {
+        obsidian: "https://www.wildberries.ru/",
+        "oud-touch": "https://www.wildberries.ru/",
+        vk: "https://vk.com/",
+        tg: "https://t.me/"
+      };
+
+      document.querySelectorAll("[data-product]").forEach((link) => {
+        const key = link.getAttribute("data-product");
+        if (links[key]) link.href = links[key];
+      });
+
+      document.querySelectorAll("[data-social]").forEach((link) => {
+        const key = link.getAttribute("data-social");
+        if (links[key]) link.href = links[key];
+      });
+
+      const modal = document.getElementById("reviewModal");
+      const modalTitle = document.getElementById("reviewModalTitle");
+      const modalFrame = document.getElementById("reviewModalFrame");
+      const closeButtons = document.querySelectorAll("[data-close-modal]");
+      const reviewButtons = document.querySelectorAll("[data-rutube]");
+
+      function openModal(title, url) {
+        if (!modal || !modalFrame || !modalTitle) return;
+        modalTitle.textContent = title || "Видеообзор";
+        modalFrame.src = url || "";
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        if (!modal || !modalFrame) return;
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        modalFrame.src = "";
+        document.body.style.overflow = "";
+      }
+
+      reviewButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const title = button.getAttribute("data-review-title");
+          const url = button.getAttribute("data-rutube");
+          openModal(title, url);
+        });
+      });
+
+      closeButtons.forEach((button) => {
+        button.addEventListener("click", closeModal);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeModal();
+      });
+
+      const items = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        items.forEach((item) => observer.observe(item));
+      } else {
+        items.forEach((item) => item.classList.add("is-visible"));
+      }
+    })();
+  </script>
+</body>
+</html>
